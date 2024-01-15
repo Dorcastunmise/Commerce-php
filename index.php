@@ -7,7 +7,7 @@
     # making a query to the db to get result
     $result = mysqli_query($conn, $sql);
 
-    #To fetch result's rows/records as an array format
+    #To fetch entire result's rows/records as an array format
     $pizzas = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
     # To free the result acquired from memory
@@ -26,13 +26,20 @@
 
     <?php include "Templates/Header.php";?>
 
-    <h4 class="center grey-text">Pizzas</h4>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h3 class="animate-character"> PIZZA</h3>
+            </div>
+        </div>
+    </div>
     <div class="container">
         <div class="row">
 
             <?php foreach($pizzas as $pizza) : ?>
                 <div class="col s6 md3">
-                    <div class="card z-depth-0">
+                    <div class="card z-depth-0 cardSpace">
+                        <img src="./Images/Niger-Pepper-pizza.jpg" class="pizza" alt="">
                         <div class="card-content center">
                             <!-- php echo htmlspecialchars($pizza['type']) { ?></h6> curly braces is replaced with colon for clear syntax--> 
                             <h6><?php echo htmlspecialchars($pizza['type']); ?></h6>
@@ -44,7 +51,7 @@
                                 </ul>
                         </div>
                         <div class="class-action right-align">
-                            <a href="#" class="brand-text">more info</a>
+                            <a href="details.php?ID=<?php echo $pizza['ID']?>" class="brand-text">more info</a>
                         </div>
                     </div>
                 </div>

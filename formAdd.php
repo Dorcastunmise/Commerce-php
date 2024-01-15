@@ -64,7 +64,7 @@
 
     <?php include "Templates/Header.php";?>
     <section class="container grey-text ">
-        <h4 class="center">Add a Pizza</h4>
+        <h4 class="center"><i>Add a Pizza</i></h4>
         <form action="<?php htmlspecialchars($_SERVER["PHP_SELF"])?>" class="white" method="POST">
             <label> Email:</label>
             <input type="text" name="email" value="<?php echo htmlspecialchars($email)?>">
