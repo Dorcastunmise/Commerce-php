@@ -1,7 +1,11 @@
 <?php 
-    # connnection 
+    /* connnection : include & require can be used as they are the same but 
+    include stops the excution of a script when a fatal error occurs
+    while require produces an warning & the script continues
+    */
     include 'config/db_connect.php';
-    # Query
+
+    # Query to request & display inputs according to when they were filled in
     $sql = 'SELECT type, ingredients, ID FROM pizzas ORDER BY created_date';
 
     # making a query to the db to get result
@@ -44,7 +48,7 @@
                             <!-- php echo htmlspecialchars($pizza['type']) { ?></h6> curly braces is replaced with colon for clear syntax--> 
                             <h6><?php echo htmlspecialchars($pizza['type']); ?></h6>
                                 <ul>
-                                    <!--Taking a string to explode into an array then cycling through the array-->
+                                    <!--Taking a string to explode into an array then cycling through the array...comma represents the delimiter-->
                                     <?php foreach(explode(',', $pizza['ingredients']) as $ingredient) : ?>
                                         <li><?php echo htmlspecialchars($ingredient); ?></li>
                                     <?php endforeach; ?>
@@ -58,9 +62,10 @@
             <?php endforeach; ?>
 
             <?php if (count($pizzas) >= 3): ?> 
-                <p>Selected 3 or more pizzas</p>
+                <br>
+                <div><b>Selected 3 or more pizzas</b> </div>
                 <?php else: ?>
-                <p>Selected less than 3 pizzas</p>            
+                <div><b>Selected less than 3 pizzas</b></div>            
             <?php endif; ?>
         </div>
     </div>

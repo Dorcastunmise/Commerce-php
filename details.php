@@ -1,11 +1,12 @@
 <?php
 
     # Connection first
+    
     include 'config/db_connect.php';
 
     # To ensure delete button is set
     if(isset($_POST['delete'])) {
-        # Passing 'id_to_delete' so incase id is tampered with by the user
+        # Passing 'id_to_delete' to avoid id being tampered with by the user
         $id_to_delete = mysqli_real_escape_string($conn, $_POST['id_to_delete']);
 
         # To delete, creating a sql
